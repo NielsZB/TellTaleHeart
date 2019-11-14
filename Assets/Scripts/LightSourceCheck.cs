@@ -29,7 +29,7 @@ public class LightSourceCheck : MonoBehaviour
                 Debug.Break();
             }
 
-            if (!Physics.Raycast(transform.position, -lightTransform.forward, 1000f,mask))
+            if (!Physics.Raycast(transform.position, -lightTransform.forward, 1000f, mask))
             {
                 Debug.Log("Dead");
                 Debug.DrawRay(transform.position, -lightTransform.forward * 10f);
