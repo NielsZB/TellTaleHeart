@@ -16,8 +16,13 @@ public class LightSourceCheck : MonoBehaviour
     [SerializeField] LayerMask mask = new LayerMask();
 
     Transform corpse;
-
+    Animator sceneChangeAnimator;
     bool inRange { get { return corpse != null; } }
+
+    private void Start()
+    {
+        sceneChangeAnimator = FindObjectOfType<SceneChange>().GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -32,7 +37,7 @@ public class LightSourceCheck : MonoBehaviour
             if (!Physics.Raycast(transform.position, -lightTransform.forward, 1000f, mask))
             {
                 Debug.Log("Dead");
-                Debug.DrawRay(transform.position, -lightTransform.forward * 10f);
+                sceneChangeAnimator.SetTrigger("Reset");
             }
         }
         else if (type == LightSourceType.spot)
@@ -53,8 +58,8 @@ public class LightSourceCheck : MonoBehaviour
                 {
                     if (hit.transform.CompareTag("Corpse"))
                     {
-                        Debug.Log("Dead!");
-                        Debug.DrawRay(ray.origin, corpse.position);
+                        Debug.Log("Dead");
+                        sceneChangeAnimator.SetTrigger("Reset");
                     }
                 }
             }
@@ -72,8 +77,8 @@ public class LightSourceCheck : MonoBehaviour
                 {
                     if (hit.transform.CompareTag("Corpse"))
                     {
-                        Debug.Log("Dead!");
-                        Debug.DrawLine(ray.origin, corpse.position);
+                        Debug.Log("Dead");
+                        sceneChangeAnimator.SetTrigger("Reset");
                     }
                 }
             }
@@ -95,4 +100,5 @@ public class LightSourceCheck : MonoBehaviour
             corpse = null;
         }
     }
+
 }

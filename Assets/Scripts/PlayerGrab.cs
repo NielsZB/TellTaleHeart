@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
-    [SerializeField] LayerMask mask = new LayerMask();
     List<GameObject> grabbableObjects = new List<GameObject>();
     GameObject grabbedObject = null;
     Rigidbody rb;
-
+    Rigidbody rbGrabbedObject;
+    bool grabbing;
     public bool HasObject
     {
         get
@@ -20,36 +20,30 @@ public class PlayerGrab : MonoBehaviour
     public void Grab()
     {
         grabbedObject = GetClosestGameobject();
-
-        Ray ray = new Ray
-        {
-            origin = transform.position,
-            direction = grabbedObject.transform.position - transform.position
-        };
-
-
-        
-        SpringJoint joint = grabbedObject.AddComponent<SpringJoint>();
-        joint.connectedBody = rb;
-        joint.connectedAnchor.Set(0f, 0.5f, 1f);
-        joint.spring = 20f;
-        joint.damper = 0.5f;
-        joint.massScale = 10f;
-        joint.enableCollision = true;
-
+        rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
+        grabbing = true;
     }
 
     public void Release()
     {
         Destroy(grabbedObject.GetComponent<SpringJoint>());
         grabbedObject.GetComponent<Rigidbody>().WakeUp();
+        rbGrabbedObject = null;
         grabbedObject = null;
-
+        grabbing = false;
     }
     private void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
         rb.maxAngularVelocity = 0f;
+    }
+
+    public void Update()
+    {
+        if(grabbing)
+        {
+            rbGrabbedObject.velocity = rb.velocity;
+        }
     }
 
     private GameObject GetClosestGameobject()
