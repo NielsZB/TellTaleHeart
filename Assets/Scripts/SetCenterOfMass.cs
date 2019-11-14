@@ -13,10 +13,6 @@ public class SetCenterOfMass : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass;
     }
-
-    private void FixedUpdate()
-    {
-    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
