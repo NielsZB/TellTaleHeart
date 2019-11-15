@@ -9,6 +9,7 @@ public class PlayerGrab : MonoBehaviour
     Rigidbody rb;
     Rigidbody rbGrabbedObject;
     bool grabbing;
+    Animator animator;
     public bool HasObject
     {
         get
@@ -19,9 +20,14 @@ public class PlayerGrab : MonoBehaviour
 
     public void Grab()
     {
+
         grabbedObject = GetClosestGameobject();
+        if (grabbedObject != null)
+        {
         rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
         grabbing = true;
+
+        }
     }
 
     public void Release()
@@ -36,6 +42,7 @@ public class PlayerGrab : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>();
         rb.maxAngularVelocity = 0f;
+        animator = GetComponentInParent<Animator>();
     }
 
     public void Update()
@@ -44,6 +51,10 @@ public class PlayerGrab : MonoBehaviour
         {
             rbGrabbedObject.velocity = rb.velocity;
         }
+
+        animator.SetBool("isGrabbing", grabbing);
+
+
     }
 
     private GameObject GetClosestGameobject()
