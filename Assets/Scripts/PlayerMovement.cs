@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     Transform cameraTransform;
     Rigidbody rb;
 
+    bool moving { get { return rb.velocity.magnitude < 0.5f; } }
+
     private void Start()
     {
         cameraTransform = Camera.main.transform;
@@ -41,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isEnabled)
         {
+            if (moving)
+            {
+
+            }
+            else
+            {
+
+            }
+
             rb.velocity = (direction * movementSpeed * inputAmount);
         }
     }
