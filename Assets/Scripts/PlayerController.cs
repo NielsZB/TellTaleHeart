@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         movementInput.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         movement.Move(movementInput);
-
+     
         if(Input.GetButtonDown("Jump"))
         {
             if(hands.HasObject)

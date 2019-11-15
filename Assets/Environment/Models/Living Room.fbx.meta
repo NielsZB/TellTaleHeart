@@ -3,32 +3,7 @@ guid: 2740de03122434e62bb6c4b56632b103
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Panels
-    second: {fileID: 2100000, guid: 114603659925d40149379f590507e708, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Panels.001
-    second: {fileID: 2100000, guid: 114603659925d40149379f590507e708, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: a7e2c15979894456b9b89676e380307b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall.001
-    second: {fileID: 2100000, guid: a7e2c15979894456b9b89676e380307b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wooden Floor
-    second: {fileID: 2100000, guid: 4a087f79edf26490282a4c596c519290, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
