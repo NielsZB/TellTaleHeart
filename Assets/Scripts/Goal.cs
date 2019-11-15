@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool bodyInGoal { get; private set; }
+    public bool Won;
+    public Animator animator;
 
-    Transition transition;
-
-
-    private void Start()
-    {
-        transition = FindObjectOfType<Transition>();
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Body"))
+        if(other.CompareTag("Corpse"))
         {
-            transition.TransitionToBlack();
+            Won = true;
+            animator.SetTrigger("Won");
         }
     }
 }
