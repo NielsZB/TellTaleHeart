@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 input;
 
 
+
     float inputAmount
     {
         get
@@ -23,13 +24,16 @@ public class PlayerMovement : MonoBehaviour
     Quaternion rotationDirection;
     Transform cameraTransform;
     Rigidbody rb;
+    Animator animator;
+    
 
-    bool moving { get { return rb.velocity.magnitude < 0.5f; } }
+    bool moving { get { return rb.velocity.magnitude > 0.1f; } }
 
     private void Start()
     {
         cameraTransform = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,19 +45,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+
         if (isEnabled)
         {
-            if (moving)
-            {
-
-            }
-            else
-            {
-
-            }
-
+            animator.SetBool("isWalking", moving); 
+         
             rb.velocity = (direction * movementSpeed * inputAmount);
         }
+
+      
     }
 
     Vector3 normalizedCameraCorrection()
