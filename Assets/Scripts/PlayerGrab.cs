@@ -10,6 +10,9 @@ public class PlayerGrab : MonoBehaviour
     Rigidbody rbGrabbedObject;
     bool grabbing;
     Animator animator;
+
+    CorpseEnd corpseEnd;
+    Vector3 corpseOffset;
     public bool HasObject
     {
         get
@@ -22,20 +25,33 @@ public class PlayerGrab : MonoBehaviour
     {
 
         grabbedObject = GetClosestGameobject();
+        corpseEnd = GetClosestCorpseEnd();
+
+        if (corpseEnd != null)
+        {
+            corpseOffset = corpseEnd.transform.position - transform.position;
+            corpseEnd.Grab();
+        }
         if (grabbedObject != null)
         {
-        rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
-        grabbing = true;
+            rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
+            grabbing = true;
 
         }
     }
 
     public void Release()
     {
-        Destroy(grabbedObject.GetComponent<SpringJoint>());
         grabbedObject.GetComponent<Rigidbody>().WakeUp();
         rbGrabbedObject = null;
         grabbedObject = null;
+
+        if(corpseEnd != null)
+        {
+            corpseEnd.Release();
+            corpseEnd = null;
+        }
+
         grabbing = false;
     }
     private void Start()
@@ -47,14 +63,24 @@ public class PlayerGrab : MonoBehaviour
 
     public void Update()
     {
-        if(grabbing)
-        {
-            rbGrabbedObject.velocity = rb.velocity;
-        }
+        //if (grabbing)
+        //{
+        //    rbGrabbedObject.velocity = rb.velocity;
+        //}
 
         animator.SetBool("isGrabbing", grabbing);
 
 
+    }
+    public void FixedUpdate()
+    {
+        if (grabbing)
+        {
+            if (corpseEnd != null)
+            {
+                corpseEnd.UpdateRigidbody(transform.position + corpseOffset);
+            }
+        }
     }
 
     private GameObject GetClosestGameobject()
@@ -74,6 +100,28 @@ public class PlayerGrab : MonoBehaviour
             }
         }
         return closestGameObject;
+    }
+    private CorpseEnd GetClosestCorpseEnd()
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        CorpseEnd closestEnd = null;
+        Vector3 position = transform.position;
+
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            if (grabbableObjects[i].TryGetComponent(out CorpseEnd end))
+            {
+                float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+                if (distanceSqr < closestDistanceSqr)
+                {
+                    closestDistanceSqr = distanceSqr;
+                    closestEnd = end;
+                }
+
+            }
+
+        }
+        return closestEnd;
     }
 
     private void OnTriggerEnter(Collider other)
