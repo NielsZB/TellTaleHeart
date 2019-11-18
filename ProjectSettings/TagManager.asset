@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Corpse
   - Body
+  - BloodFloor
   layers:
   - Default
   - TransparentFX
