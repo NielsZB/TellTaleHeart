@@ -42,7 +42,6 @@ public class DeadBodyBloodTrack : MonoBehaviour
     {
         if (Physics.Raycast(body.position, -Vector3.up, out _bloodAreaHit, 4f, _LayerMask ))
         {
-            Debug.Log("hitBlood");
             _DrawMaterial.SetVector("_Coordinate", new Vector4(_bloodAreaHit.textureCoord.x, _bloodAreaHit.textureCoord.y, 0, 0));
             _DrawMaterial.SetFloat("_Size", brushSize);
             _DrawMaterial.SetFloat("_Strenght", brushStrenght);
