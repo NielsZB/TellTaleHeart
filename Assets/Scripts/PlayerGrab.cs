@@ -6,141 +6,135 @@ public class PlayerGrab : MonoBehaviour
 {
     List<GameObject> grabbableObjects = new List<GameObject>();
     GameObject grabbedObject = null;
+    Rigidbody rb;
+    Rigidbody rbGrabbedObject;
+    bool grabbing;
+    Animator animator;
 
-    Vector3 offset;
+    CorpseEnd corpseEnd;
+    Vector3 corpseOffset;
+    public bool HasObject
+    {
+        get
+        {
+            return grabbedObject != null;
+        }
+    }
 
+    public void Grab()
+    {
 
-    //List<GameObject> grabbableObjects = new List<GameObject>();
-    //GameObject grabbedObject = null;
-    //Rigidbody rb;
-    //Rigidbody rbGrabbedObject;
-    //bool grabbing;
-    //Animator animator;
+        grabbedObject = GetClosestGameobject();
+        corpseEnd = GetClosestCorpseEnd();
 
-    //CorpseEnd corpseEnd;
-    //Vector3 corpseOffset;
-    //public bool HasObject
-    //{
-    //    get
-    //    {
-    //        return grabbedObject != null;
-    //    }
-    //}
+        if (corpseEnd != null)
+        {
+            corpseOffset = corpseEnd.transform.position - transform.position;
+            corpseEnd.Grab();
+        }
+        if (grabbedObject != null)
+        {
+            rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
+            grabbing = true;
 
-    //public void Grab()
-    //{
+        }
+    }
 
-    //    grabbedObject = GetClosestGameobject();
-    //    corpseEnd = GetClosestCorpseEnd();
+    public void Release()
+    {
+        grabbedObject.GetComponent<Rigidbody>().WakeUp();
+        rbGrabbedObject = null;
+        grabbedObject = null;
 
-    //    if (corpseEnd != null)
-    //    {
-    //        corpseOffset = corpseEnd.transform.position - transform.position;
-    //        corpseEnd.Grab();
-    //    }
-    //    if (grabbedObject != null)
-    //    {
-    //        rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
-    //        grabbing = true;
+        if(corpseEnd != null)
+        {
+            corpseEnd.Release();
+            corpseEnd = null;
+        }
 
-    //    }
-    //}
+        grabbing = false;
+    }
+    private void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+        rb.maxAngularVelocity = 0f;
+        animator = GetComponentInParent<Animator>();
+    }
 
-    //public void Release()
-    //{
-    //    grabbedObject.GetComponent<Rigidbody>().WakeUp();
-    //    rbGrabbedObject = null;
-    //    grabbedObject = null;
+    public void Update()
+    {
+        //if (grabbing)
+        //{
+        //    rbGrabbedObject.velocity = rb.velocity;
+        //}
 
-    //    if(corpseEnd != null)
-    //    {
-    //        corpseEnd.Release();
-    //        corpseEnd = null;
-    //    }
-
-    //    grabbing = false;
-    //}
-    //private void Start()
-    //{
-    //    rb = GetComponentInParent<Rigidbody>();
-    //    rb.maxAngularVelocity = 0f;
-    //    animator = GetComponentInParent<Animator>();
-    //}
-
-    //public void Update()
-    //{
-    //    //if (grabbing)
-    //    //{
-    //    //    rbGrabbedObject.velocity = rb.velocity;
-    //    //}
-
-    //    animator.SetBool("isGrabbing", grabbing);
+        animator.SetBool("isGrabbing", grabbing);
 
 
-    //}
-    //public void FixedUpdate()
-    //{
-    //    if (grabbing)
-    //    {
-    //        if (corpseEnd != null)
-    //        {
-    //            corpseEnd.UpdateRigidbody(transform.position + corpseOffset);
-    //        }
-    //    }
-    //}
+    }
+    public void FixedUpdate()
+    {
+        if (grabbing)
+        {
+            if (corpseEnd != null)
+            {
+                corpseEnd.UpdateRigidbody(transform.position + corpseOffset);
+            }
+        }
+    }
 
-    //private GameObject GetClosestGameobject()
-    //{
-    //    float closestDistanceSqr = Mathf.Infinity;
-    //    GameObject closestGameObject = null;
-    //    Vector3 position = transform.position;
+    private GameObject GetClosestGameobject()
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        GameObject closestGameObject = null;
+        Vector3 position = transform.position;
 
-    //    for (int i = 0; i < grabbableObjects.Count; i++)
-    //    {
-    //        float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
 
-    //        if (distanceSqr < closestDistanceSqr)
-    //        {
-    //            closestDistanceSqr = distanceSqr;
-    //            closestGameObject = grabbableObjects[i];
-    //        }
-    //    }
-    //    return closestGameObject;
-    //}
-    //private CorpseEnd GetClosestCorpseEnd()
-    //{
-    //    float closestDistanceSqr = Mathf.Infinity;
-    //    CorpseEnd closestEnd = null;
-    //    Vector3 position = transform.position;
+            if (distanceSqr < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqr;
+                closestGameObject = grabbableObjects[i];
+            }
+        }
+        return closestGameObject;
+    }
+    private CorpseEnd GetClosestCorpseEnd()
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        CorpseEnd closestEnd = null;
+        Vector3 position = transform.position;
 
-    //    for (int i = 0; i < grabbableObjects.Count; i++)
-    //    {
-    //        if (grabbableObjects[i].TryGetComponent(out CorpseEnd end))
-    //        {
-    //            float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
-    //            if (distanceSqr < closestDistanceSqr)
-    //            {
-    //                closestDistanceSqr = distanceSqr;
-    //                closestEnd = end;
-    //            }
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            if (grabbableObjects[i].TryGetComponent(out CorpseEnd end))
+            {
+                float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+                if (distanceSqr < closestDistanceSqr)
+                {
+                    closestDistanceSqr = distanceSqr;
+                    closestEnd = end;
+                }
 
-    //        }
+            }
 
-    //    }
-    //    return closestEnd;
-    //}
+        }
+        return closestEnd;
+    }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    grabbableObjects.Add(other.gameObject);
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (grabbableObjects.Contains(other.gameObject))
-    //    {
-    //        grabbableObjects.Remove(other.gameObject);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        grabbableObjects.Add(other.gameObject);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (grabbableObjects.Contains(other.gameObject))
+        {
+            grabbableObjects.Remove(other.gameObject);
+        }
+    }
 
     //List<HingeJoint> grabbableObjects;
     //HingeJoint grabbedObject;
