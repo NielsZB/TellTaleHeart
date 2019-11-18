@@ -3518,7 +3518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9031843575729578475}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3569,7 +3569,7 @@ GameObject:
   - component: {fileID: 3186996056255449567}
   - component: {fileID: 3186996056255449566}
   - component: {fileID: 3186996056255449570}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone.003 [LightCheck]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3696,7 +3696,7 @@ GameObject:
   - component: {fileID: 4075920828913165950}
   - component: {fileID: 4075920828913165949}
   - component: {fileID: 4075920828913165952}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone.001 [LightCheck]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3835,7 +3835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6775041368805064486}
   - component: {fileID: 8401914228188100749}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3883,7 +3883,7 @@ GameObject:
   - component: {fileID: 7909489308515478852}
   - component: {fileID: 7909489308515478851}
   - component: {fileID: 7909489308515478850}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4028,8 +4028,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4753979622622849637}
-  m_Layer: 0
-  m_Name: CorpseRigidbodyTest
+  m_Layer: 11
+  m_Name: CorpseTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4047,7 +4047,7 @@ GameObject:
   - component: {fileID: 8774695388336935436}
   - component: {fileID: 8774695388336935435}
   - component: {fileID: 8774695388336935434}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
