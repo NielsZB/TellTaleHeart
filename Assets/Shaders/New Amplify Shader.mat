@@ -41,8 +41,8 @@ Material:
     - _Float1: 0
     - _Refraction_Strength: 0.1
     - _Refraction_Strength1: 0.1
-    - _Smoothness: 0.774
+    - _Smoothness: 0.911
     - _Smoothness1: 0.438
     - _Tile: 3
     m_Colors:
-    - _Color0: {r: 0.5, g: 0, b: 0, a: 1}
+    - _Color0: {r: 0.3207547, g: 0, b: 0, a: 1}
