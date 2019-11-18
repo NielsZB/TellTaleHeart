@@ -2143,6 +2143,11 @@ PrefabInstance:
       propertyPath: lightTransform
       value: 
       objectReference: {fileID: 2035111235}
+    - target: {fileID: 4290519780048591834, guid: 3188fe5579ed0994db1e07dd96355e4f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3188fe5579ed0994db1e07dd96355e4f, type: 3}
 --- !u!1001 &575683941
