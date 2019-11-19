@@ -36,8 +36,6 @@ public class LightSourceCheck : MonoBehaviour
 
             if (!Physics.Raycast(transform.position, -lightTransform.forward, 1000f, mask))
             {
-                Debug.DrawRay(transform.position, -lightTransform.forward*20f);
-                Debug.Break();
                 sceneChangeAnimator.SetTrigger("Reset");
             }
         }
@@ -59,8 +57,6 @@ public class LightSourceCheck : MonoBehaviour
                 {
                     if (hit.transform.CompareTag("Corpse"))
                     {
-                        Debug.DrawRay(transform.position, -lightTransform.forward * 20f);
-                        Debug.Break();
                         sceneChangeAnimator.SetTrigger("Reset");
                     }
                 }
