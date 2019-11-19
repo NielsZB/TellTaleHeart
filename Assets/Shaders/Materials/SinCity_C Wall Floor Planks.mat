@@ -23,7 +23,7 @@ Material:
     m_TexEnvs:
     - _AlbedoTex:
         m_Texture: {fileID: 2800000, guid: dc6b80b11338143e391d4751a74bc3e9, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTex1:
         m_Texture: {fileID: 0}
@@ -35,11 +35,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: 956de529646614fbc85b2b6324afb7eb, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
         m_Texture: {fileID: 2800000, guid: 6a64cb711c57a4f4c8bf9042ab7a939f, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _Ramp1:
         m_Texture: {fileID: 2800000, guid: 6a64cb711c57a4f4c8bf9042ab7a939f, type: 3}

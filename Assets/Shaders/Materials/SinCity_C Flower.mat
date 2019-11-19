@@ -56,7 +56,7 @@ Material:
     - _BlendMode: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Desaturate: 0
+    - _Desaturate: 1
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
