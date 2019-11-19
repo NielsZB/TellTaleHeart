@@ -12585,7 +12585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Profile: {fileID: 11400000, guid: 80e2b0c531d047643a53ba7a5d288a22, type: 2}
+  m_Profile: {fileID: 11400000, guid: 5bd3a1b2745a54d0c9ca72def02002ad, type: 2}
   m_StaticLightingSkyUniqueID: 0
 --- !u!1 &2907704865706550565
 GameObject:
@@ -12635,7 +12635,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 80e2b0c531d047643a53ba7a5d288a22, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 5bd3a1b2745a54d0c9ca72def02002ad, type: 2}
 --- !u!1001 &3389084295819286350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12753,7 +12753,7 @@ MonoBehaviour:
   priority: -1
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 22807c7be610a654ea25230ac0350372, type: 2}
+  sharedProfile: {fileID: 11400000, guid: fce818750377f48fc960f172a20426df, type: 2}
 --- !u!1 &4305901942008255023
 GameObject:
   m_ObjectHideFlags: 0
