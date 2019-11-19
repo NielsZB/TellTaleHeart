@@ -43,7 +43,7 @@ public void LoadNextLevel()
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.P))
         {
             LoadNextLevel();
         }
