@@ -89,9 +89,9 @@ Material:
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:
-    - _AlbedoColor: {r: 1, g: 0.5176471, b: 0, a: 1}
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _AlbedoColor1: {r: 1, g: 1, b: 1, a: 0}
     - _Color0: {r: 0.7830189, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 1024, g: 530.0706, b: 0, a: 0}
+    - _EmissionColor: {r: 644.86804, g: 644.86804, b: 644.86804, a: 0}
     - _MaskColor: {r: 1, g: 0, b: 0, a: 0}
