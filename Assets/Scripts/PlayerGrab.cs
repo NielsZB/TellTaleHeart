@@ -93,13 +93,92 @@ public class PlayerGrab : MonoBehaviour
                 Release();
             }
         }
+        grabbedObject.GetComponent<Rigidbody>().WakeUp();
+        rbGrabbedObject = null;
+        grabbedObject = null;
+
+        if(corpseEnd != null)
+        {
+            corpseEnd.Release();
+            corpseEnd = null;
+        }
+
+        grabbing = false;
+    }
+    private void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+        rb.maxAngularVelocity = 0f;
+        animator = GetComponentInParent<Animator>();
+    }
+
+    public void Update()
+    {
+        //if (grabbing)
+        //{
+        //    rbGrabbedObject.velocity = rb.velocity;
+        //}
+
+        animator.SetBool("isGrabbing", grabbing);
+
+
+    }
+    public void FixedUpdate()
+    {
+        if (grabbing)
+        {
+            if (corpseEnd != null)
+            {
+                corpseEnd.UpdateRigidbody(transform.position + corpseOffset);
+            }
+        }
+    }
+
+    private GameObject GetClosestGameobject()
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        GameObject closestGameObject = null;
+        Vector3 position = transform.position;
+
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+
+            if (distanceSqr < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqr;
+                closestGameObject = grabbableObjects[i];
+            }
+        }
+        return closestGameObject;
+    }
+    private CorpseEnd GetClosestCorpseEnd()
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        CorpseEnd closestEnd = null;
+        Vector3 position = transform.position;
+
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            if (grabbableObjects[i].TryGetComponent(out CorpseEnd end))
+            {
+                float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+                if (distanceSqr < closestDistanceSqr)
+                {
+                    closestDistanceSqr = distanceSqr;
+                    closestEnd = end;
+                }
+
+            }
+
+        }
+        return closestEnd;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         grabbableObjects.Add(other.gameObject);
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (grabbableObjects.Contains(other.gameObject))

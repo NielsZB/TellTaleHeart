@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
-{
-    public void LoadNextLevel()
+{ 
+
+    void Start()
+    {
+        //Set Cursor to not be visible
+        Cursor.visible = false;
+    }
+
+
+public void LoadNextLevel()
     {
         if(SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
         {
@@ -35,12 +43,12 @@ public class SceneChange : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             LoadNextLevel();
         }
 
-        if(Input.GetButtonDown("Fire2"))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             LoadPrevousLevel();
         }

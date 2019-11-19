@@ -3,22 +3,7 @@ guid: dd33f3c56855142469f53d718a010b53
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dirty_Metal_rmmodbdp
-    second: {fileID: 2100000, guid: c3b991dc9eb234116b823b1f0351b482, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Top
-    second: {fileID: 2100000, guid: e1ed63fa39f404b12a5f45b28ec79a93, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wax
-    second: {fileID: 2100000, guid: 06e2e818ff1dd44a1af16a10bc56880d, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
