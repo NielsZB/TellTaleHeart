@@ -17,7 +17,7 @@ public class AudioController : MonoBehaviour
     {
         if (!audio.isPlaying)
         {
-            clipIndex = Random.Range(0, clips.Length - 1);
+            clipIndex = Random.Range(0, clips.Length -1);
             audio.clip = clips[clipIndex];
             audio.PlayDelayed(Random.Range(5f, 10f));
             Debug.Log("Nothing playing, we set new audio to " + audio.clip.name);
