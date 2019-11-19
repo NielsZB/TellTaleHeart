@@ -7,7 +7,12 @@ public class ExitOnClick : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("QUIT");
+            Application.Quit();
+        }
+
     }
 
 }
