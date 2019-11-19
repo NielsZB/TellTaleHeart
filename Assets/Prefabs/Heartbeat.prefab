@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7484066366009997276
+--- !u!1 &5021569353342934235
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,61 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7484066366009997275}
-  - component: {fileID: 7484066366009997274}
-  - component: {fileID: 7484066366009997277}
+  - component: {fileID: 5021569353342934229}
+  - component: {fileID: 5021569353342934228}
   m_Layer: 0
-  m_Name: RandomSoundGenerator
+  m_Name: Heartbeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7484066366009997275
+--- !u!4 &5021569353342934229
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484066366009997276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5021569353342934235}
+  m_LocalRotation: {x: -0.3535534, y: -0.35355335, z: 0.14644662, w: 0.8535534}
+  m_LocalPosition: {x: -0.8799994, y: -1.6918535, z: 7.6568546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7484066366009997274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484066366009997276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5d692d82802604ab508e405e5898b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: e0bf4b12452feec4bb4b551473594e4f, type: 3}
-  - {fileID: 8300000, guid: 766ea3dae4a32bb4fb6f647aebf80ef1, type: 3}
-  - {fileID: 8300000, guid: 07cd635f0a9e46143bea5a0501ec032b, type: 3}
---- !u!82 &7484066366009997277
+--- !u!82 &5021569353342934228
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484066366009997276}
+  m_GameObject: {fileID: 5021569353342934235}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b810e3a23d9b2794da8731e586181331, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0940c9e6165586249ac0b35df9c4bce0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.55
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -74,7 +57,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 1
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -134,7 +117,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.577
       inSlope: 0
       outSlope: 0
       tangentMode: 0
