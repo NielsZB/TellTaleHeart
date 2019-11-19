@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 15374056955498405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.008, y: 0, z: -0.044}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 775689927384905272}
   - {fileID: 4233034731338046989}
@@ -83,9 +83,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.16263197
-  m_Height: 1.4378688
+  m_Height: 1.410652
   m_Direction: 2
-  m_Center: {x: 0, y: 0.1772611, z: 0.12180035}
+  m_Center: {x: -9.512341e-11, y: 0.1772611, z: 0.12180035}
 --- !u!114 &8293224274946849070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6719245597448002910, guid: 2c3e8ad7b79cc7d44af88576d8edffc2, type: 3}
+  - {fileID: 2100000, guid: ea3130d84434846648ec096e312cd0a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
