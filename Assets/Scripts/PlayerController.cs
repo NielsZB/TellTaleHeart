@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     PlayerMovement movement;
-    PlayerGrab hands;
+    Grab hands;
     Vector2 movementInput;
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        hands = GetComponentInChildren<PlayerGrab>();
+        hands = GetComponentInChildren<Grab>();
     }
 
     private void Update()
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            hands.Grab();
+            hands.TryGrab();
         }
 
         if (Input.GetButtonUp("Jump"))

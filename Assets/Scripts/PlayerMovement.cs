@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Transform cameraTransform;
     Rigidbody rb;
     bool SetRotation;
-    PlayerGrab grab;
+    Grab grab;
 
     public bool IsMoving { get { return rb.velocity.magnitude > 0.1f; } }
 
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraTransform = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
-        grab = GetComponentInChildren<PlayerGrab>();
+        grab = GetComponentInChildren<Grab>();
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         direction.y = 0f;
         if (grab.HasObject)
         {
-            SetDirectionRotation(grab.grabbedObject.transform.position - transform.position);
+            SetDirectionRotation(grab.GrabbedObject.transform.position - transform.position);
         }
         else
         {

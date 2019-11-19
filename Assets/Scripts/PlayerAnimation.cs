@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     PlayerMovement movement;
-    PlayerGrab grab;
+    Grab grab;
     Animator animator;
 
     int IsMovingHash;
@@ -13,7 +13,7 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        grab = GetComponentInChildren<PlayerGrab>();
+        grab = GetComponentInChildren<Grab>();
         animator = GetComponent<Animator>();
 
         IsMovingHash = Animator.StringToHash("IsWalking");
