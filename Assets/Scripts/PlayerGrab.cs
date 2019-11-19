@@ -4,11 +4,109 @@ using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
+    SpringJoint joint;
     List<GameObject> grabbableObjects = new List<GameObject>();
-    GameObject grabbedObject = null;
-
+    public GameObject grabbedObject { get; private set; }
+    Rigidbody rbGrabbedObject;
+    Corpse corpse;
     Vector3 offset;
+    public bool HasObject { get { return grabbedObject != null; } }
+    public bool HasGrabbableObjectsInRange { get { return grabbableObjects.Count != 0; } }
 
+    public bool HasCorpse { get { return corpse != null; } }
+    bool isCorpse { get { return corpse != null; } }
+
+    private GameObject GetClosestObject()
+    {
+        if (grabbableObjects.Count == 0)
+            return null;
+
+        float closestDistanceSqr = Mathf.Infinity;
+        GameObject closestObject = null;
+        Vector3 position = transform.position;
+        for (int i = 0; i < grabbableObjects.Count; i++)
+        {
+            float distanceSqr = (position - grabbableObjects[i].transform.position).sqrMagnitude;
+
+            if (distanceSqr < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqr;
+                closestObject = grabbableObjects[i];
+            }
+        }
+
+        return closestObject;
+    }
+    public void Grab()
+    {
+        grabbedObject = GetClosestObject();
+        if (grabbedObject != null)
+        {
+            rbGrabbedObject = grabbedObject.GetComponent<Rigidbody>();
+            offset = grabbedObject.transform.position - transform.position;
+            joint = gameObject.AddComponent<SpringJoint>();
+            GetComponent<Rigidbody>().isKinematic = true;
+            joint.connectedBody = grabbedObject.GetComponent<Rigidbody>();
+            joint.spring = 100f;
+            joint.minDistance = 0f;
+            
+            if (grabbedObject.TryGetComponent(out corpse))
+            {
+                if ((transform.position - corpse.Head.position).sqrMagnitude < (transform.position - corpse.Legs.position).sqrMagnitude)
+                {
+                    corpse.GrabHead(GetComponentInParent<Rigidbody>());
+                }
+                else
+                {
+                    corpse.GrabLegs(GetComponentInParent<Rigidbody>());
+                }
+            }
+        }
+    }
+
+    public void Release()
+    {
+        if (corpse != null)
+        {
+            corpse.Release();
+            corpse = null;
+        }
+        Destroy(joint);
+        grabbedObject = null;
+    }
+
+    private void FixedUpdate()
+    {
+        if (HasObject)
+        {
+            if (isCorpse)
+            {
+
+            }
+            else
+            {
+                rbGrabbedObject.MovePosition(transform.position + offset);
+            }
+
+            if (!HasGrabbableObjectsInRange)
+            {
+                Release();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        grabbableObjects.Add(other.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (grabbableObjects.Contains(other.gameObject))
+        {
+            grabbableObjects.Remove(other.gameObject);
+        }
+    }
 
     //List<GameObject> grabbableObjects = new List<GameObject>();
     //GameObject grabbedObject = null;

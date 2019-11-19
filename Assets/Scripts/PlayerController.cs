@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     PlayerMovement movement;
     PlayerGrab hands;
     Vector2 movementInput;
-    bool grabbed;
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
@@ -19,16 +18,17 @@ public class PlayerController : MonoBehaviour
         movementInput.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         movement.Move(movementInput);
-     
-        if(Input.GetButtonDown("Jump"))
+
+        if (Input.GetButtonDown("Jump"))
         {
-            if(hands.HasObject)
+            hands.Grab();
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            if (hands.HasObject)
             {
                 hands.Release();
-            }
-            else
-            {
-                hands.Grab();
             }
         }
     }

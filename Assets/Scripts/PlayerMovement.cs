@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float rotationSpeed = 20f;
     Vector2 input;
 
-
-
     float inputAmount
     {
         get
@@ -24,37 +22,38 @@ public class PlayerMovement : MonoBehaviour
     Quaternion rotationDirection;
     Transform cameraTransform;
     Rigidbody rb;
-    Animator animator;
-    
+    bool SetRotation;
+    PlayerGrab grab;
 
-    bool moving { get { return rb.velocity.magnitude > 0.1f; } }
+    public bool IsMoving { get { return rb.velocity.magnitude > 0.1f; } }
 
     private void Start()
     {
         cameraTransform = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        grab = GetComponentInChildren<PlayerGrab>();
     }
 
     private void Update()
     {
         direction = normalizedCameraCorrection();
         direction.y = 0f;
-        SetDirectionRotation();
+        if (grab.HasObject)
+        {
+            SetDirectionRotation(grab.grabbedObject.transform.position - transform.position);
+        }
+        else
+        {
+            SetDirectionRotation();
+        }
     }
 
     private void FixedUpdate()
     {
-        
-
         if (isEnabled)
         {
-            animator.SetBool("isWalking", moving); 
-         
             rb.velocity = (direction * movementSpeed * inputAmount);
         }
-
-      
     }
 
     Vector3 normalizedCameraCorrection()
@@ -78,6 +77,21 @@ public class PlayerMovement : MonoBehaviour
                 Time.fixedDeltaTime * inputAmount * rotationSpeed);
         }
     }
+    void SetDirectionRotation(Vector3 direction)
+    {
+        rb.angularVelocity = Vector3.zero;
+        if (direction != Vector3.zero)
+        {
+            direction.y = 0f;
+            rotationDirection = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                rotationDirection,
+                Time.fixedDeltaTime * inputAmount * rotationSpeed);
+        }
+    }
+
 
     public void Move(Vector2 input)
     {
