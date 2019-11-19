@@ -1803,6 +1803,11 @@ PrefabInstance:
       propertyPath: lightTransform
       value: 
       objectReference: {fileID: 2035111235}
+    - target: {fileID: 6021496122927570677, guid: 53309313f3998ab4ea2416dd8886b9e8,
+        type: 3}
+      propertyPath: _bloodTerrain
+      value: 
+      objectReference: {fileID: 1216190657176456481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53309313f3998ab4ea2416dd8886b9e8, type: 3}
 --- !u!1 &247938256
