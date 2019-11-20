@@ -915,7 +915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: press enter to continue
+  m_Text: press P to continue
 --- !u!222 &627826747
 CanvasRenderer:
   m_ObjectHideFlags: 0

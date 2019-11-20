@@ -47,7 +47,7 @@ Material:
     - _Desaturate: 0
     - _Desaturate1: 1
     - _DistortTile: 5
-    - _Emission: 0
+    - _Emission: 5
     - _Emission1: 0
     - _Float0: 0.636
     - _Float1: 0
@@ -60,5 +60,5 @@ Material:
     - _AlbedoColor: {r: 0.25471693, g: 0.018033063, b: 0, a: 1}
     - _AlbedoColor1: {r: 0.1372549, g: 0.3764706, b: 0.3058823, a: 1}
     - _Color0: {r: 1, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0.38679248, g: 0, b: 0, a: 0}
     - _EmissionColor1: {r: 0, g: 0, b: 0, a: 0}

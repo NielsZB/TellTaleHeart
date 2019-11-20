@@ -4315,7 +4315,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 9e87b2798dbe9084bbd381d818633c85,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1783272743594993207, guid: 9e87b2798dbe9084bbd381d818633c85,
         type: 3}
@@ -8297,7 +8297,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.03
-      minScalar: 0.01
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13007,7 +13007,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 3
+  antialiasing: 2
   SMAAQuality: 2
   dithering: 1
   stopNaNs: 0
@@ -13363,11 +13363,6 @@ PrefabInstance:
       propertyPath: lightTransform
       value: 
       objectReference: {fileID: 438647411}
-    - target: {fileID: 6021496122927570677, guid: 53309313f3998ab4ea2416dd8886b9e8,
-        type: 3}
-      propertyPath: _bloodTerrain
-      value: 
-      objectReference: {fileID: 1456736569}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53309313f3998ab4ea2416dd8886b9e8, type: 3}
 --- !u!1001 &1355808849
